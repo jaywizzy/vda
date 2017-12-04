@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="col sm-12 md-6 offset-m2">
+      <div class="card">
+        <div class="card-body">
+        <h2 class="flow-text">Update your information</h2>
+          <form action="." method="POST" class="padding" enctype="multipart/form-data">
+            {% csrf_token %}
+              <!--{{ noodle_form.as_p }}-->
+              {% include 'includes/form.html' %}
+            <div class="divider"></div>
+            {{ formset.management_form }}
+                <!--{{ formset.photo| add_class:"form-control" }}-->
+
+               {% for field in formset %}
+               <div class="form-group">
+                  <div class="row">
+
+                   {{ field.errors }}
+
+                       <div class="col-md-4">
+                           {{ field.photo.label}}
+                        {{ field.photo | add_class:"form-control"}}
+                       </div>
+                        <div class="col-md-4">
+                           {{ field.middle_name.label}}
+                       {{ field.middle_name | add_class:"form-control" }}
+                        </div>
+
+                       <div class="col-md-4">
+                       {{ field.hamlet_name.label}}
+                   {{ field.hamlet_name | add_class:"form-control" }}
+                       </div>
+                       <div class="col-md-4">
+                       {{ field.ward_name.label}}
+                   {{ field.ward_name | add_class:"form-control"}}
+                       </div>
+                       <div class="col-md-4">
+                       {{ field.district.label}}
+                   {{ field.district | add_class:"form-control"}}
+                       </div>
+                       <div class="col-md-4">
+                       {{ field.address.label}}
+                   {{ field.address | add_class:"form-control"}}
+                       </div>
+                       <div class="col-md-4">
+                       {{ field.occupation.label}}
+                   {{ field.occupation | add_class:"form-control"}}
+                       </div>
+                       <div class="col-md-4">
+                       {{ field.date_of_birth.label}}
+                   {{ field.date_of_birth| attr:"type:'date'" | add_class:"form-control" }}
+                       </div>
+                       <div class="col-md-4">
+                       {{ field.phone_number.label}}
+                   {{ field.phone_number | add_class:"form-control"}}
+                       </div>
+                       <div class="col-md-4">
+                       {{ field.educational_qualification.label}}
+                   {{ field.educational_qualification | add_class:"form-control" }}
+                       </div>
+                    </div>
+               </div>
+              {% endfor %}
+
+            <button type="submit" class="btn-floating btn-large waves-light waves-effect"><i class="large material-icons">done</i></button>
+            <a href="#" onclick="window.history.back(); return false;" title="Cancel" class="btn-floating waves-effect waves-light red"><i class="material-icons">history</i></a>
+
+        </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

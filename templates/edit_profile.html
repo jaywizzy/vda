@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+{% block breadcrumb1 %}
+
+{% endblock %}
+
+
+    <form method="post" enctype="multipart/form-data"> {% csrf_token %}
+        {% for message in messages %}
+            {% if message.error %}
+                {{ message.error }}
+            {% endif %}
+        {% endfor %}
+
+        <div class="col-md-12 ">
+
+                <div class="col-md-4">1</div>
+                <div class="col-md-4">2</div>
+                <div class="col-md-4">3</div>
+        </div>
+        <div class="form-group">
+        <div class="row">
+
+       <div class="col-md-4">
+        {{ p_form.photo.label}}
+        {{ p_form.photo | add_class:"form-control"}}
+       </div>
+
+        <div class="col-md-4">
+           {{ p_form.middle_name.label}}
+            {{ p_form.middle_name | add_class:"form-control" }}
+        </div>
+
+       <div class="col-md-4">
+           {{ p_form.hamlet_name.label}}
+           {{ p_form.hamlet_name | add_class:"form-control" }}
+       </div>
+
+       <div class="col-md-4">
+           {{ p_form.ward_name.label}}
+           {{ p_form.ward_name | add_class:"form-control"}}
+       </div>
+
+       <div class="col-md-4">
+           {{ p_form.district.label}}
+           {{ p_form.district | add_class:"form-control"}}
+       </div>
+
+       <div class="col-md-4">
+           {{ p_form.address.label}}
+           {{ p_form.address | add_class:"form-control"}}
+       </div>
+
+       <div class="col-md-4">
+           {{ p_form.occupation.label}}
+           {{ p_form.occupation | add_class:"form-control"}}
+       </div>
+
+       <div class="col-md-4">
+           {{ p_form.date_of_birth.label}}
+           {{ p_form.date_of_birth | add_class:"form-control" }}
+       </div>
+       <div class="col-md-4">
+            {{ p_form.phone_number.label}}
+            {{ p_form.phone_number | add_class:"form-control"}}
+       </div>
+
+       <div class="col-md-4">
+           {{ p_form.educational_qualification.label}}
+           {{ p_form.educational_qualification | add_class:"form-control" }}
+       </div>
+
+                 </div>
+    </div>
+            <button type="submit" class="btn btn-primary btn-block">Done</button>
+
+    </form>
+
+
+{% endblock content %}
+
+
+
+

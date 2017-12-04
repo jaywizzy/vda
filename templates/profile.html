@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <!--<h1 class="text-center logo my-4">-->
+      <!--<a href="{% url 'home' %}">Vwang Development Association (VDA)</a>-->
+    <!--</h1>-->
+    {% if request.user.is_authenticated %}
+    {% if user.profile.photo %}<img src="{{ user.profile.photo.url }}" height="200">{% endif %}
+
+    <p>first name : {{ user.first_name }}</p>
+    <p>last name : {{ user.last_name }}</p>
+    <p>email : {{ user.email }}</p>
+
+     {% if user.profile.hamlet_name %} <p>hamlet name : {{ user.profile.hamlet_name }}</p> {% endif %}
+     {% if user.profile.ward_name %}<p>ward name : {{ user.profile.ward_name }}</p>{% endif %}
+     {% if user.profile.address %}<p>address : {{ user.profile.address }}</p>{% endif %}
+     {% if user.profile.occupation %}<p>occupation : {{ user.profile.occupation }}</p>{% endif %}
+     {% if user.profile.date_of_birth %}<p>date of birth : {{ user.profile.date_of_birth }}</p>{% endif %}
+     {% if user.profile.phone_number %}<p>phone number : {{ user.profile.phone_number }}</p>{% endif %}
+     {% if user.profile.educational_qualification %} <p>educational qualication : {{ user.profile.educational_qualification }}</p>       {% endif %}
+
+
+    {% endif %}
+    <a href="{% url 'edit_profile' %}"><button class="btn btn-primary">edit profile</button></a>
+  </div>
+{% endblock %}
