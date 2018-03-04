@@ -1,0 +1,10 @@
+{% extends 'index.html' %}
+{% block middle %}
+    {% block post %}
+    <div class="w3-container w3-padding">
+        <label> Board Title </label> {{ form.name }}
+        <button type="submit"> create</button>
+    </div>
+
+    {% endblock %}
+{% endblock %}

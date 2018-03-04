@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+{% block breadcrumb1 %}
+
+{% endblock %}
+
+
+    <form method="post" enctype="multipart/form-data"> {% csrf_token %}
+        {% for message in messages %}
+          {{ message }}
+        {% endfor %}
+        {% for error in form.error %}
+          {{error}}
+        {% endfor %}
+
+      <div class="col-md-12"><center><h3> Edit Profile</h3></center>
+      </div>
+        <div class="form-group">
+        <div class="row">
+
+        <!-- <div class="col-md-4">
+         {{ u_form.first_name.label}}
+         {{ u_form.first_name | add_class:"form-control"}}
+        </div>
+        <div class="col-md-4">
+         {{ u_form.last_name.label}}
+         {{ u_form.last_name | add_class:"form-control"}}
+        </div>
+        <div class="col-md-4">
+         {{ u_form.email.label}}
+         {{ u_form.email | add_class:"form-control"}}
+        </div> -->
+        {% for i in u_form %}        
+        <div class="col-md-4">
+            {{ i.label }} {{ i | add_class:"form-control"}}
+        </div>
+        {% endfor %}
+
+        {% for i in p_form %}        
+        <div class="col-md-4">
+            {{ i.label }} {{ i | add_class:"form-control"}}
+        </div>
+        {% endfor %}
+        
+
+       <!-- <div class="col-md-4">
+        {{ p_form.photo.label}}
+        {{ p_form.photo | add_class:"form-control"}}
+       </div>
+
+        <div class="col-md-4">
+           {{ p_form.middle_name.label}}
+            {{ p_form.middle_name | add_class:"form-control" }}
+        </div>
+
+       <div class="col-md-4">
+           {{ p_form.village.label}}
+           {{ p_form.village | add_class:"form-control" }}
+       </div>
+
+       <div class="col-md-4">
+           {{ p_form.ward.label}}
+           {{ p_form.ward | add_class:"form-control"}}
+       </div>
+
+       <div class="col-md-4">
+           {{ p_form.district.label}}
+           {{ p_form.district | add_class:"form-control"}}
+       </div>
+
+       <div class="col-md-4">
+           {{ p_form.address.label}}
+           {{ p_form.address | add_class:"form-control"}}
+       </div>
+
+       <div class="col-md-4">
+           {{ p_form.occupation.label}}
+           {{ p_form.occupation | add_class:"form-control"}}
+       </div>
+
+       <div class="col-md-4">
+           {{ p_form.date_of_birth.label}}
+           {{ p_form.date_of_birth | add_class:"form-control" }}
+       </div>
+       <div class="col-md-4">
+            {{ p_form.phone_number.label}}
+            {{ p_form.phone_number | add_class:"form-control"}}
+       </div>
+
+       <div class="col-md-4">
+           {{ p_form.educational_qualification.label}}
+           {{ p_form.educational_qualification | add_class:"form-control" }}
+       </div>
+       <div class="col-md-4">
+            {{ p_form.gender.label}}
+            {{ p_form.gender | add_class:"form-control" }}
+        </div> -->
+       <!-- <div class="col-md-4">
+           {{ p_form.slug.label}}
+           {{ p_form.slug | add_class:"form-control" }}
+       </div> -->
+
+                 </div>
+    </div>
+            <button type="submit" class="btn btn-primary btn-block">Done</button>
+
+    </form>
+
+
+{% endblock content %}

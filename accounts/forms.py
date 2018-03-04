@@ -16,13 +16,28 @@ class SignupForm(UserCreationForm):
         model = User
         fields = ('first_name', 'last_name', 'email', 'password1', 'password2')
 
+class StaffForm(UserCreationForm):
+    email = forms.CharField(max_length = 254, required = True, widget=forms.EmailInput())
+    first_name = forms.CharField(max_length = 254, required= True)
+    last_name = forms.CharField(max_length = 254, required = True)
+
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'email', 'password1', 'password2')
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.is_staff = True
+        if commit:
+            user.save()
+        return user
+
 class ProfileForm(forms.ModelForm):
     # date_of_birth = forms.DateField(widget=forms.SelectDateWidget())
     date_of_birth = forms.fields.DateField(widget=forms.widgets.DateInput(attrs={'type': 'date'}), required=False)
     class Meta:
         model = Profile
         fields = ('__all__')
-        exclude = ['user', ]
+        exclude = ['user', 'slug' ]
 
 
 

@@ -2,8 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>{% block title %}vda{% endblock %}</title>
+    <title>{% block title %}Gban{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/app.css' %}">
     {% block stylesheet %}{% endblock %}
   </head>
@@ -11,17 +12,26 @@
   {% block body %}
      <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="{% url 'home' %}">Vwang Development Association (VDA)</a>
+    {% if user.is_staff %}
+    {% block search %}
+    <form method="GET" action="">
+      <input type="text" name="q" placeholder="search VDA" value="{{ request.GET.q }}" />
+      <button type="submit" value="search" class="btn btn-primary" >search</button>
+    </form>
+    {% endblock %}
+    {% endif %}
+    <a class="navbar-brand" href="{% url 'home' %}" > Gban</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    <!-- {% include 'search.html' %} -->
 
     <div class="collapse navbar-collapse" id="mainMenu">
         {% if user.is_authenticated %}
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           welcome {{ user.first_name }}
+          {% if user.is_authenticated %} welcome {{ user.first_name }} {{ or }} {{ user.email }} {% endif %}
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu">
             <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
@@ -41,22 +51,31 @@
   </div>
 </nav>
 
-      <div class="container">
-        {% block breadcrumb1 %}
-          <ol class="breadcrumb my-4">
-            {% block breadcrumb %}
-            {% endblock %}
-          </ol>
-        {% endblock %}
+<div class="container">
 
-          {% block content %}
+    {% block content %}
 
 
-          {% endblock %}
-      </div>
+    {% endblock %}
+</div>
   {% endblock body %}
     <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
     <script src="{% static 'js/popper.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
-  </body>
+
+  <!-- <script src="https://js.paystack.co/v1/inline.js"></script>
+  <div id="paystackEmbedContainer"></div>
+
+  <script>
+    PaystackPop.setup({
+     key: 'pk_test_221221122121',
+     email: 'customer@email.com',
+     amount: 10000,
+     container: 'paystackEmbedContainer',
+     callback: function(response){
+          alert('successfully subscribed. transaction ref is ' + response.reference);
+      },
+    });
+  </script>
+  </body> -->
 </html>

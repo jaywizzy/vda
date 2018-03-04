@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  {% if user.is_staff %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Occupation</th>
+        <th>Address</th>
+      <tr>
+    </thead>
+    <tbody>
+      {% for i in result %}
+      <tr>
+      </a>
+        <td><a href="{% url 'user_details' i.id %}">{{ i.first_name }}</td>
+        <td>{{ i.last_name }}</td>
+        <td>{{ i.email}}</td>
+        <td>{{ i.profile.phone_number}}</td>
+        <td>{{ i.profile.occupation}}</td>
+        <td>{{ i.profile.address }}</td>
+      </tr>
+    </tbody>
+
+
+      {% endfor %}
+
+  </table>
+{% endif %}
+
+{% endblock content %}

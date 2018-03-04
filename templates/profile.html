@@ -12,13 +12,19 @@
     <p>last name : {{ user.last_name }}</p>
     <p>email : {{ user.email }}</p>
 
-     {% if user.profile.hamlet_name %} <p>hamlet name : {{ user.profile.hamlet_name }}</p> {% endif %}
-     {% if user.profile.ward_name %}<p>ward name : {{ user.profile.ward_name }}</p>{% endif %}
-     {% if user.profile.address %}<p>address : {{ user.profile.address }}</p>{% endif %}
-     {% if user.profile.occupation %}<p>occupation : {{ user.profile.occupation }}</p>{% endif %}
-     {% if user.profile.date_of_birth %}<p>date of birth : {{ user.profile.date_of_birth }}</p>{% endif %}
-     {% if user.profile.phone_number %}<p>phone number : {{ user.profile.phone_number }}</p>{% endif %}
-     {% if user.profile.educational_qualification %} <p>educational qualication : {{ user.profile.educational_qualification }}</p>       {% endif %}
+     {% if user.profile.village %} <p>Village : {{ user.profile.village }}</p> {% endif %}
+     {% if user.profile.ward %} <p>Ward : {{ user.profile.ward_name }}</p>{% endif %}
+     {% if user.profile.address %} <p>Address : {{ user.profile.address }}</p>{% endif %}
+     {% if user.profile.occupation %} <p>Occupation : {{ user.profile.occupation }}</p>{% endif %}
+     {% if user.profile.date_of_birth %} <p>Date of Birth : {{ user.profile.date_of_birth }}</p>{% endif %}
+     {% if user.profile.phone_number %} <p>Phone Number : {{ user.profile.phone_number }}</p>{% endif %}
+     {% if user.profile.educational_qualification %} <p>Educational Qualication : {{ user.profile.educational_qualification }}</p>       {% endif %}
+     {% if user.profile.employment_status %} <p>Employment Status : {{ user.profile.employment_status }}</p>       {% endif %}
+     {% if user.profile.disabilities %} <p>Disability : {{ user.profile.disabilities }}</p>       {% endif %}
+     {% if user.profile.district %} <p>District : {{ user.profile.district }}</p>       {% endif %}
+     {% if user.profile.gender %} <p>Gender : {{ user.profile.get_gender_display }}</p>       {% endif %}
+     
+     
 
 
     {% endif %}

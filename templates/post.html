@@ -1,0 +1,8 @@
+{% extends 'index.html' %}
+{% block middle %}
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button class="btn-primary btn"type="submit"> post</button>
+</form>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block search %}
+
+{% endblock %}
+
+{% block breadcrumb %}
+
+{% endblock %}
+{% block content %}
+<!-- {{ instance.profile.slug }} -->
+
+{% if instance.profile.photo %}<img src="{{ instance.profile.photo.url }}"  width="200">{% else %} <p> no profile photo </p>{% endif %}
+
+
+<div class="row">
+<div class="col-md-4"><p><span style="color:#098765">First Name:</span> {{ instance.first_name }}</p></div>
+<div class="col-md-4"><p><span style="color:#098765">Last Name: </span>{{ instance.last_name }}</p></div>
+<div class="col-md-4"><p><span style="color:#098765">Email: </span>{{ instance.email }}</p></div>
+<div class="col-md-4"><p><span style="color:#098765">Middle Name: </span>{{ instance.profile.middle_name }}</p></div>
+<div class="col-md-4"><p><span style="color:#098765">Hamlet Name: </span>{{ instance.profile.village }}</p></div>
+<div class="col-md-4"><p><span style="color:#098765">District: </span>{{ instance.profile.district }}</p></div>
+<div class="col-md-4"><p><span style="color:#098765">Phone Number: </span>{{ instance.profile.phone_number }}</p></div>
+<div class="col-md-4"><p><span style="color:#098765">Ward Name: </span>{{ instance.profile.ward }}</p.></div>
+  <div class="col-md-4"><p><span style="color:#098765">Occupation:</span> {{ instance.profile.occupation }}</p></div>
+  <div class="col-md-4"><p><span style="color:#098765">Address:</span> {{ instance.profile.address }}</p></div>
+<div class="col-md-4"><p><span style="color:#098765">Educational Qualification:</span> {{ instance.profile.educational_qualification }}</p></div>
+<div class="col-md-4"><p><span style="color:#098765">Date of Birth:</span> {{ instance.profile.date_of_birth }}</p></div>
+</div>
+
+{% endblock %}

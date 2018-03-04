@@ -1,7 +1,37 @@
-{% extends 'base.html' %}
+{% extends 'index.html' %}
+{% load widget_tweaks %}
 
-{% block content %}
+{% block post %}
+<form method="post" enctype="multipart/form-data">{% csrf_token %}
+  <div class="w3-card w3-round w3-white">
+    <div class="w3-container w3-padding">
+      <!-- <p contenteditable="true" class="w3-border w3-padding"></p> -->
+      {{ form.content }}<br>
+      {{ photo }}
+      <br><br>
+      <button type="submit" class="w3-button w3-theme"><i class="fa fa-pencil"></i>  Post</button>
+    </div>
+  </div>
+</div>
+</form>
+{% endblock %}
+{% block post_list %}
+{% for i in post %}
+<div class="w3-container w3-card w3-white w3-round w3-margin"><br>
 
-
-
+  <img src="{{ i.starter.profile.photo.url }}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+  <span class="w3-right w3-opacity">1 min</span>
+  <h4>{{  i.starter.first_name }}</h4><br>
+  <hr class="w3-clear">
+  <p>{{ i.content }}</p>
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-half">
+      </div>
+      
+  </div>
+  <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
+  <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
+  </div>
+{% endfor %}
+  
 {% endblock %}

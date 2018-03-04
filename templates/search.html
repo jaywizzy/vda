@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  {% block search %}
+  <form method="GET" action="">
+    <input type="text" name="q" placeholder="search VDA" value="{{ request.GET.q }}" />
+    <button type="submit" value="search" class="btn btn-primary" >search</button>
+  </form>
+  {% endblock %}
+  {% block search_result %}
+    {% if messages.error %}
+      {{ messages.error }}
+
+    {% endif %}
+    {% if result %}
+      {% for i in result %}
+      <a href="{% url 'user_details' i.id %}"> {{ i.first_name }} {{ i.last_name }} </a>
+      {% endfor %}
+    {% else %}
+      <p>nothing matches your search</p>
+    {% endif %}
+  {% endblock %}
+{% endblock %}
