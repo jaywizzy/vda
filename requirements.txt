@@ -17,7 +17,7 @@ newspaper3k==0.2.5
 nltk==3.2.5
 oauthlib==2.0.6
 olefile==0.44
-Pillow==4.3.0
+Pillow==9.3.0
 PyJWT==1.5.3
 python-dateutil==2.6.1
 python-decouple==3.1
